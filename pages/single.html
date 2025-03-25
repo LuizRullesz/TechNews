@@ -1,0 +1,72 @@
+<%- include('partials/header.html') %>
+
+<main class="noticia-container">
+    <div class="center">
+        <div class="grid-noticias">
+            <!-- Coluna Principal -->
+            <article class="noticia-principal">
+                <div class="noticia-header">
+                    <div class="meta-info">
+                        <span class="categoria"><%= noticia.categoria %></span>
+                        <span class="separador">•</span>
+                        <span class="autor">Por <%= noticia.autor %></span>
+                        <span class="separador">•</span>
+                        <span class="views"><i class="fas fa-eye"></i> <%= noticia.views %> visualizações</span>
+                    </div>
+                    <h1 class="titulo-principal"><%= noticia.titulo %></h1>
+                </div>
+
+                <div class="imagem-destaque">
+                    <img src="<%= noticia.imagem %>" alt="<%= noticia.titulo %>" />
+                </div>
+
+                <div class="conteudo-noticia">
+                    <%- noticia.conteudo %>
+                </div>
+
+                <div class="compartilhar">
+                    <h4>Compartilhe esta notícia</h4>
+                    <div class="social-buttons">
+                        <a href="#" class="social-button facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-button twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-button whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-button linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="mais-lidas-widget">
+                    <h3 class="widget-titulo">Mais Lidas</h3>
+                    <div class="mais-lidas-lista">
+                        <% for(let i = 0; i < postsTop.length; i++) { %>
+                        <article class="noticia-card">
+                            <div class="card-imagem">
+                                <img src="<%= postsTop[i].imagem %>" alt="<%= postsTop[i].titulo %>" />
+                                <span class="numero-ranking"><%= i + 1 %></span>
+                            </div>
+                            <div class="card-conteudo">
+                                <span class="card-categoria"><%= postsTop[i].categoria %></span>
+                                <h4 class="card-titulo"><%= postsTop[i].titulo %></h4>
+                                <p class="card-excerpt"><%= postsTop[i].descricaoCurta %></p>
+                                <div class="card-footer">
+                                    <span class="card-views"><i class="fas fa-eye"></i> <%= postsTop[i].views %></span>
+                                    <a href="/<%= postsTop[i].slug %>" class="card-link">Ler mais <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </article>
+                        <% } %>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<%- include('partials/footer.html') %>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
+</html>

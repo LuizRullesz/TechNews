@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TechNews - Portal de Tecnologia</title>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- CSS Principal -->
+        <link rel="stylesheet" href="/public/style.css">
+    </head>
+
+    <body>
+        <header class="header">
+            <nav class="nav-container">
+                <div class="nav-content">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="/">
+                            <h1><span>TechNews</span></h1>
+                        </a>
+                    </div>
+
+                    <!-- Menu de Navegação -->
+                    <ul class="nav-menu">
+                        <li><a href="/" class="active">Home</a></li>
+                        <li><a href="#">Hardware</a></li>
+                        <li><a href="#">Software</a></li>
+                        <li><a href="#">Mobile</a></li>
+                        <li><a href="#">Games</a></li>
+                        <li><a href="#">IA</a></li>
+                    </ul>
+
+                    <!-- Busca e Menu Mobile -->
+                    <div class="nav-actions">
+                        <div class="search-container">
+                            <form action="/" method="GET" class="search-form">
+                                <input type="text" name="busca" placeholder="Buscar notícias tech...">
+                                <button type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <button class="menu-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Menu Mobile -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="#">Hardware</a></li>
+                <li><a href="#">Software</a></li>
+                <li><a href="#">Mobile</a></li>
+                <li><a href="#">Games</a></li>
+                <li><a href="#">IA</a></li>
+            </ul>
+            <form action="/" method="GET" class="mobile-search">
+                <input type="text" name="busca" placeholder="Buscar notícias tech...">
+                <button type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Script para o menu mobile -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuToggle = document.querySelector('.menu-toggle');
+                const mobileMenu = document.querySelector('.mobile-menu');
+                const menuIcon = menuToggle.querySelector('i');
+
+                menuToggle.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                    menuIcon.classList.toggle('fa-bars');
+                    menuIcon.classList.toggle('fa-times');
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,106 @@
+<%- include('partials/header.html') %>
+
+<main class="main-content">
+    <!-- Notícia em Destaque -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="featured-news">
+                <div class="featured-image">
+                    <img src="<%= posts[0].imagem %>" alt="<%= posts[0].titulo %>">
+                    <div class="featured-overlay"></div>
+                    <div class="featured-content">
+                        <span class="featured-category"><%= posts[0].categoria %></span>
+                        <h2 class="featured-title">
+                            <a href="/<%= posts[0].slug %>"><%= posts[0].titulo %></a>
+                        </h2>
+                        <p class="featured-excerpt"><%= posts[0].descricaoCurta %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grade de Notícias -->
+    <section class="news-grid-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Últimas Noticias</h2>
+                <div class="section-tabs">
+                    <button class="tab active">Todas</button>
+                    <button class="tab">Hardware</button>
+                    <button class="tab">Software</button>
+                    <button class="tab">Mobile</button>
+                    <button class="tab">Games</button>
+                    <button class="tab">IA</button>
+                </div>
+            </div>
+
+            <div class="news-grid">
+                <!-- Coluna Principal -->
+                <div class="main-column">
+                    <% for(let i = 1; i < posts.length; i++) { %>
+                    <article class="news-card">
+                        <div class="news-card-image">
+                            <img src="<%= posts[i].imagem %>" alt="<%= posts[i].titulo %>">
+                            <span class="news-category"><%= posts[i].categoria %></span>
+                        </div>
+                        <div class="news-card-content">
+                            <h3 class="news-title">
+                                <a href="/<%= posts[i].slug %>"><%= posts[i].titulo %></a>
+                            </h3>
+                            <p class="news-excerpt"><%= posts[i].descricaoCurta %></p>
+                            <div class="news-meta">
+                                <span class="news-date">
+                                    <i class="far fa-clock"></i> Hoje
+                                </span>
+                                <span class="news-views">
+                                    <i class="far fa-eye"></i> <%= posts[i].views || 0 %> visualizações
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                    <% } %>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="widget trending-widget">
+                        <h3 class="widget-title">Trending Tech</h3>
+                        <div class="trending-list">
+                            <% for(let i = 0; i < postsTop.length; i++) { %>
+                            <article class="trending-item">
+                                <span class="trending-number"><%= i + 1 %></span>
+                                <div class="trending-content">
+                                    <span class="trending-category"><%= postsTop[i].categoria %></span>
+                                    <h4 class="trending-title">
+                                        <a href="/<%= postsTop[i].slug %>"><%= postsTop[i].titulo %></a>
+                                    </h4>
+                                    <div class="trending-meta">
+                                        <span class="views">
+                                            <i class="far fa-eye"></i> <%= postsTop[i].views %> views
+                                        </span>
+                                    </div>
+                                </div>
+                            </article>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="widget newsletter-widget">
+                        <h3 class="widget-title">Newsletter Tech</h3>
+                        <p>Receba as últimas novidades do mundo da tecnologia no seu e-mail</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Seu melhor e-mail">
+                            <button type="submit">Inscrever-se</button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+</main>
+
+<%- include('partials/footer.html') %>
+
+</body>
+</html>
